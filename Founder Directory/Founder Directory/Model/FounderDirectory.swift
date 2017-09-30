@@ -16,7 +16,6 @@ class FounderDirectory {
     var photoSet: [String] = []
     var companySet: [String] = []
     
-    
     let founders : [Founder] = [
         Founder(firstName: "Chewbacca",
                 lastName: "Wookiee",
@@ -69,18 +68,11 @@ class FounderDirectory {
         companySet = []
         
         for founder in founders {
-            if !fullnameSet.contains(founder.firstName) {
-                fullnameSet.append("\(founder.firstName) \(founder.lastName)")
-            }
-            
+            fullnameSet.append("\(founder.firstName) \(founder.lastName)")
             companySet.append(founder.company)
-            
-            if !photoSet.contains(founder.photo) {
-                photoSet.append(founder.photo)
-            }
+            photoSet.append(founder.photo)
         }
         
-        fullnameSet = fullnameSet.sorted()
     }
     
     // MARK: - Public Helpers

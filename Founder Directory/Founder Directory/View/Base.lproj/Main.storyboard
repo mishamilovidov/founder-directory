@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z8s-bw-HQQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cdZ-o1-vW7">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,6 +46,12 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Pcq-nw-7ga" kind="showDetail" identifier="ShowFounder" id="iuJ-3P-qfG">
+                                        <segue key="commit" inheritsFrom="parent" id="V7O-JD-kwg"/>
+                                        <segue key="preview" inheritsFrom="commit" id="ydo-eE-bfp"/>
+                                    </segue>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -56,28 +64,81 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MlX-Td-BNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1143.2" y="32.512315270935964"/>
+            <point key="canvasLocation" x="766" y="-228"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="vqu-5f-se4">
+        <!--Founder Detail View Controller-->
+        <scene sceneID="w1l-a4-YlA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z8s-bw-HQQ" sceneMemberID="viewController">
+                <viewController id="C2Q-m3-vXz" customClass="FounderDetailViewController" customModule="Founder_Directory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RZL-xV-k78">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Kxz-BD-WRZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CjV-rd-6kM">
+                        <barButtonItem key="backBarButtonItem" id="xNM-VR-K29"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="COW-GK-QtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="542"/>
+        </scene>
+        <!--Global Split View Controller-->
+        <scene sceneID="7pk-yw-Uai">
+            <objects>
+                <splitViewController id="cdZ-o1-vW7" customClass="GlobalSplitViewController" customModule="Founder_Directory" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="Pcq-nw-7ga" kind="relationship" relationship="detailViewController" id="YIB-ge-Voc"/>
+                        <segue destination="aLK-bT-WwR" kind="relationship" relationship="masterViewController" id="Dcr-c7-W0x"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOj-fA-Sif" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1338" y="98"/>
+        </scene>
+        <!--Founder Detail-->
+        <scene sceneID="GRI-Y2-bPe">
+            <objects>
+                <navigationController title="Founder Detail" automaticallyAdjustsScrollViewInsets="NO" id="Pcq-nw-7ga" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TUr-xM-pMq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wrs-sL-L7Q">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xes-48-VcC" kind="relationship" relationship="rootViewController" id="TQE-OI-8gI"/>
+                        <segue destination="C2Q-m3-vXz" kind="relationship" relationship="rootViewController" id="rgy-EN-yOo"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6q1-r0-5JU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Coz-6I-Eow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327" y="33"/>
+            <point key="canvasLocation" x="-391" y="543"/>
+        </scene>
+        <!--Founders Directory-->
+        <scene sceneID="3hU-AD-uMb">
+            <objects>
+                <navigationController title="Founders Directory" automaticallyAdjustsScrollViewInsets="NO" id="aLK-bT-WwR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lyE-Q5-RqQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YtK-2r-May">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xes-48-VcC" kind="relationship" relationship="rootViewController" id="agv-Nj-qkz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ySG-PM-sB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-391" y="-228"/>
         </scene>
     </scenes>
     <resources>
         <image name="chewie" width="85" height="85"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YIB-ge-Voc"/>
+    </inferredMetricsTieBreakers>
 </document>

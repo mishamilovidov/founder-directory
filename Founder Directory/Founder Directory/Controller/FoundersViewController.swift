@@ -18,6 +18,8 @@ class FoundersViewController : UITableViewController {
     
     // MARK: - Properties
     
+    var selectedFounder : String?
+    
     // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
@@ -54,11 +56,15 @@ class FoundersViewController : UITableViewController {
         cell.imageView?.layer.cornerRadius = (image?.size.width)!/2
         cell.imageView?.layer.masksToBounds = true;
         cell.imageView?.layer.borderWidth = 0;
-        cell.imageView?.transform.translatedBy(x: 0.5, y: 0.5)//.scaledBy(x: 0.5, y: 0.5)
         
         return cell
     }
     
     // MARK: - Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedFounder = FounderDirectory.sharedInstance.fullnameSet[indexPath.row].capitalized
+        print(indexPath.row)
+    }
 }
 
