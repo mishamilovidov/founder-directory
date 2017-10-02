@@ -11,16 +11,15 @@ import Foundation
 class FounderDirectory {
     
     // MARK: - Properties
-    
-    var fullnameSet: [String] = []
-    var photoSet: [String] = []
-    var companySet: [String] = []
+    var founderSet: [Founder] = []
     
     let founders : [Founder] = [
         Founder(firstName: "Chewbacca",
                 lastName: "Wookiee",
                 preferredName: "Chewie",
-                phone: "801-555-1212",
+                fullName: "",
+                spouseName: "",
+                phone: "8015551212",
                 email: "chewie@gmail.com",
                 company: "Millenium Falcon Company",
                 bio: "Chewbacca, nicknamed 'Chewie', is a fictional character in the Star Wars franchise. He is a Wookiee, a tall, hirsute biped and intelligent species from the planet Kashyyyk. Chewbacca is the loyal friend and associate of Han Solo, and serves as co-pilot on Solo's ship, the Millenium Falcon.",
@@ -28,26 +27,32 @@ class FounderDirectory {
         Founder(firstName: "Leia",
                 lastName: "Princess",
                 preferredName: "Your Highness",
-                phone: "385-555-1212",
+                fullName: "",
+                spouseName: "",
+                phone: "3855551212",
                 email: "leia@gmail.com",
                 company: "The Rebel Company",
-                bio: "",
+                bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor metus erat, id sollicitudin orci pellentesque et. Cras ac leo sit amet risus lobortis facilisis. Pellentesque ac nisi ut magna aliquam porta in eu urna. Nunc in mi scelerisque, vulputate dui id, mollis lectus. Ut non pretium enim, eu feugiat lectus.",
                 photo: "leia"),
         Founder(firstName: "Han",
                 lastName: "Solo",
                 preferredName: "Han",
-                phone: "214-555-1212",
+                fullName: "",
+                spouseName: "",
+                phone: "2145551212",
                 email: "han@gmail.com",
                 company: "Millenium Falcon Company",
-                bio: "",
+                bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor metus erat, id sollicitudin orci pellentesque et. Cras ac leo sit amet risus lobortis facilisis. Pellentesque ac nisi ut magna aliquam porta in eu urna. Nunc in mi scelerisque, vulputate dui id, mollis lectus. Ut non pretium enim, eu feugiat lectus.",
                 photo: "han"),
         Founder(firstName: "Luke",
                 lastName: "Skywalker",
                 preferredName: "Luke",
-                phone: "408-555-1212",
+                fullName: "",
+                spouseName: "",
+                phone: "4085551212",
                 email: "luke@gmail.com",
                 company: "Jedi Company",
-                bio: "",
+                bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor metus erat, id sollicitudin orci pellentesque et. Cras ac leo sit amet risus lobortis facilisis. Pellentesque ac nisi ut magna aliquam porta in eu urna. Nunc in mi scelerisque, vulputate dui id, mollis lectus. Ut non pretium enim, eu feugiat lectus.",
                 photo: "luke")
     ]
     
@@ -63,14 +68,9 @@ class FounderDirectory {
     
     private func update() {
         
-        fullnameSet = []
-        photoSet = []
-        companySet = []
-        
         for founder in founders {
-            fullnameSet.append("\(founder.firstName) \(founder.lastName)")
-            companySet.append(founder.company)
-            photoSet.append(founder.photo)
+            founder.fullName = "\(founder.firstName) \(founder.lastName)"
+            founderSet.append(founder)
         }
         
     }
