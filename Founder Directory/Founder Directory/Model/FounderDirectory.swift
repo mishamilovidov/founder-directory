@@ -23,7 +23,9 @@ class FounderDirectory {
                 email: "chewie@gmail.com",
                 company: "Millenium Falcon Company",
                 bio: "Chewbacca, nicknamed 'Chewie', is a fictional character in the Star Wars franchise. He is a Wookiee, a tall, hirsute biped and intelligent species from the planet Kashyyyk. Chewbacca is the loyal friend and associate of Han Solo, and serves as co-pilot on Solo's ship, the Millenium Falcon.",
-                photo: "chewie"),
+                photo: "chewie",
+                phoneListed: true,
+                emailListed: true),
         Founder(firstName: "Leia",
                 lastName: "Princess",
                 preferredName: "Your Highness",
@@ -33,7 +35,9 @@ class FounderDirectory {
                 email: "leia@gmail.com",
                 company: "The Rebel Company",
                 bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor metus erat, id sollicitudin orci pellentesque et. Cras ac leo sit amet risus lobortis facilisis. Pellentesque ac nisi ut magna aliquam porta in eu urna. Nunc in mi scelerisque, vulputate dui id, mollis lectus. Ut non pretium enim, eu feugiat lectus.",
-                photo: "leia"),
+                photo: "leia",
+                phoneListed: true,
+                emailListed: true),
         Founder(firstName: "Han",
                 lastName: "Solo",
                 preferredName: "Han",
@@ -43,7 +47,9 @@ class FounderDirectory {
                 email: "han@gmail.com",
                 company: "Millenium Falcon Company",
                 bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor metus erat, id sollicitudin orci pellentesque et. Cras ac leo sit amet risus lobortis facilisis. Pellentesque ac nisi ut magna aliquam porta in eu urna. Nunc in mi scelerisque, vulputate dui id, mollis lectus. Ut non pretium enim, eu feugiat lectus.",
-                photo: "han"),
+                photo: "han",
+                phoneListed: true,
+                emailListed: true),
         Founder(firstName: "Luke",
                 lastName: "Skywalker",
                 preferredName: "Luke",
@@ -53,7 +59,9 @@ class FounderDirectory {
                 email: "luke@gmail.com",
                 company: "Jedi Company",
                 bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor metus erat, id sollicitudin orci pellentesque et. Cras ac leo sit amet risus lobortis facilisis. Pellentesque ac nisi ut magna aliquam porta in eu urna. Nunc in mi scelerisque, vulputate dui id, mollis lectus. Ut non pretium enim, eu feugiat lectus.",
-                photo: "luke")
+                photo: "luke",
+                phoneListed: true,
+                emailListed: true)
     ]
     
     // MARK: - Singleton pattern

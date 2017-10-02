@@ -22,10 +22,12 @@ class Founder {
     var company: String
     var bio: String
     var photo: String
+    var phoneListed: Bool
+    var emailListed: Bool
     
     // MARK: - Initialization
     
-    init(firstName: String, lastName: String, preferredName: String, fullName: String, spouseName: String, phone: String, email: String, company: String, bio: String, photo: String) {
+    init(firstName: String, lastName: String, preferredName: String, fullName: String, spouseName: String, phone: String, email: String, company: String, bio: String, photo: String, phoneListed: Bool, emailListed: Bool) {
         self.firstName = firstName
         self.lastName = lastName
         self.preferredName = preferredName
@@ -36,5 +38,7 @@ class Founder {
         self.company = company
         self.bio = bio
         self.photo = photo
+        self.phoneListed = phoneListed
+        self.emailListed = emailListed
     }
 }

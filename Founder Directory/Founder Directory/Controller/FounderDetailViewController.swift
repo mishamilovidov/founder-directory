@@ -155,10 +155,18 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // Probably should refactor table to be dynamic instead of static so we don't have to manual hide certain fields
-        
+        // Probably should refactor table to be dynamic instead of static so we don't have to manually hide certain fields
+
         if indexPath.row == 0 {
             return 270.0
+        }
+        
+        if indexPath.row == 2 && founder?.phoneListed == false {
+            return 0.0
+        }
+        
+        if indexPath.row == 3 && founder?.emailListed == false {
+            return 0.0
         }
         
         if indexPath.row == 5 && founder?.spouseName.count == 0 {
