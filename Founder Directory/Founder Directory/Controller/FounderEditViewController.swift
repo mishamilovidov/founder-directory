@@ -104,7 +104,7 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         editFounderPreferredName.text = founder?.preferredName
         editFounderCompany.text = founder?.company
         editFounderSpouse.text = founder?.spouseName
-        editFounderPhone.text = founder?.phone
+        editFounderPhone.text = formattedNumber(number: (founder?.phone)!)
         editFounderEmail.text = founder?.email
         editFounderBio.text = founder?.bio
         
@@ -114,6 +114,26 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
     }
     
     // MARK: - Private Helpers
+    
+    private func formattedNumber(number: String) -> String {
+        let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        var mask = "(XXX) XXX-XXXX"
+        
+        var result = ""
+        var index = cleanPhoneNumber.startIndex
+        for ch in mask.characters {
+            if index == cleanPhoneNumber.endIndex {
+                break
+            }
+            if ch == "X" {
+                result.append(cleanPhoneNumber[index])
+                index = cleanPhoneNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
     
     private func saveDetails() {
         FounderDirectory.sharedInstance.founders[0].firstName = "Cool"
@@ -153,6 +173,12 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         editFounderBio.resignFirstResponder()
         
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == editFounderPhone {
+            editFounderPhone.text = formattedNumber(number: editFounderPhone.text!)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
