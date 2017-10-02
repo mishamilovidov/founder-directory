@@ -92,7 +92,7 @@ class FoundersViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.FounderCellIdentifier, for: indexPath) as! FounderTableViewCell
-        let image = UIImage(named: "\(FounderDirectory.sharedInstance.founderSet[indexPath.row].photo)")
+        let image = FounderDirectory.sharedInstance.founderSet[indexPath.row].photo
         let fullName = "\(FounderDirectory.sharedInstance.founderSet[indexPath.row].fullName.capitalized)"
         let company = "\(FounderDirectory.sharedInstance.founderSet[indexPath.row].company.capitalized)"
         

@@ -101,7 +101,7 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
     // MARK: - Private Helpers
     
     private func configure() {
-        founderPhotoImageView.image = UIImage(named: (founder?.photo)!)
+        founderPhotoImageView.image = founder?.photo
         founderFullNameLabel.text = founder?.fullName.capitalized
         founderCompanyLabel.text = founder?.company.capitalized
         founderPreferredNameLabel.text = founder?.preferredName.capitalized

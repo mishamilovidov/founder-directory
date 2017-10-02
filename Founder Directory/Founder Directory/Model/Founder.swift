@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Founder {
     
@@ -21,13 +22,13 @@ class Founder {
     var email: String
     var company: String
     var bio: String
-    var photo: String
+    var photo: UIImage
     var phoneListed: Bool
     var emailListed: Bool
     
     // MARK: - Initialization
     
-    init(firstName: String, lastName: String, preferredName: String, fullName: String, spouseName: String, phone: String, email: String, company: String, bio: String, photo: String, phoneListed: Bool, emailListed: Bool) {
+    init(firstName: String, lastName: String, preferredName: String, fullName: String, spouseName: String, phone: String, email: String, company: String, bio: String, photo: UIImage, phoneListed: Bool, emailListed: Bool) {
         self.firstName = firstName
         self.lastName = lastName
         self.preferredName = preferredName

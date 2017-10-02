@@ -98,7 +98,7 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
     }
     
     private func configure() {
-        editFounderImageView.image = UIImage(named: (founder?.photo)!)
+        editFounderImageView.image = founder?.photo
         editFounderFirstName.text = founder?.firstName
         editFounderLastName.text = founder?.lastName
         editFounderPreferredName.text = founder?.preferredName
