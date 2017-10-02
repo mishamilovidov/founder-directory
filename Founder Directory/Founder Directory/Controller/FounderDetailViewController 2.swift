@@ -154,20 +154,6 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // Probably should refactor table to be dynamic instead of static so we don't have to manual hide certain fields
-        
-        if indexPath.row == 0 {
-            return 270.0
-        }
-        
-        if indexPath.row == 5 && founder?.spouseName.count == 0 {
-            return 0.0
-        }
-        
-        return tableView.rowHeight
-    }
-    
     // MARK: - Delegates
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {

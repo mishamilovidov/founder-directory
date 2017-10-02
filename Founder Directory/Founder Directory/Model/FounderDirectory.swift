@@ -18,7 +18,7 @@ class FounderDirectory {
                 lastName: "Wookiee",
                 preferredName: "Chewie",
                 fullName: "",
-                spouseName: "",
+                spouseName: "Mrs. Wookiee",
                 phone: "8015551212",
                 email: "chewie@gmail.com",
                 company: "Millenium Falcon Company",
