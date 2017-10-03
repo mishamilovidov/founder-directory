@@ -24,7 +24,7 @@ class FounderDirectory {
                 company: "Millenium Falcon Company",
                 bio: "Chewbacca, nicknamed 'Chewie', is a fictional character in the Star Wars franchise. He is a Wookiee, a tall, hirsute biped and intelligent species from the planet Kashyyyk. Chewbacca is the loyal friend and associate of Han Solo, and serves as co-pilot on Solo's ship, the Millenium Falcon.",
                 photo: #imageLiteral(resourceName: "chewie"),
-                phoneListed: true,
+                phoneListed: false,
                 emailListed: true),
         Founder(firstName: "Leia",
                 lastName: "Princess",
@@ -37,7 +37,7 @@ class FounderDirectory {
                 bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor metus erat, id sollicitudin orci pellentesque et. Cras ac leo sit amet risus lobortis facilisis. Pellentesque ac nisi ut magna aliquam porta in eu urna. Nunc in mi scelerisque, vulputate dui id, mollis lectus. Ut non pretium enim, eu feugiat lectus.",
                 photo: #imageLiteral(resourceName: "leia"),
                 phoneListed: true,
-                emailListed: true),
+                emailListed: false),
         Founder(firstName: "Han",
                 lastName: "Solo",
                 preferredName: "Han",
@@ -77,11 +77,12 @@ class FounderDirectory {
     private func update() {
         
         for founder in founders {
-            founder.fullName = "\(founder.firstName) \(founder.lastName)"
+            founder.fullName = Helpers.setFullName(firstName: founder.firstName, lastName: founder.lastName)
             founderSet.append(founder)
         }
         
     }
     
     // MARK: - Public Helpers
+    
 }

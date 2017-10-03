@@ -51,30 +51,31 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         
         saveDetails()
         
-        performSegue(withIdentifier: Storyboard.ExitSegueIdentifier, sender: nil)
+        performSegue(withIdentifier: Storyboard.ExitSegueIdentifier, sender: sender)
     }
     
     @IBAction func editFounderImage(_ sender: Any) {
-//        imagePicker.allowsEditing = false
-//        imagePicker.sourceType = .photoLibrary
-        
         let picker = UIImagePickerController()
-        picker.delegate = self
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        picker.delegate = self
+        
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {
             action in
             picker.sourceType = .camera
             self.present(picker, animated: true, completion: nil)
         }))
+        
         alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {
             action in
             picker.sourceType = .photoLibrary
             self.present(picker, animated: true, completion: nil)
         }))
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
         self.present(alert, animated: true, completion: nil)
         
-//        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func toggleListEmailSwitch(_ sender: UISwitch) {
@@ -93,6 +94,7 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         
         configure()
         imagePicker.delegate = self
+        editFounderImageView.contentMode = .scaleAspectFill
         tableView.estimatedRowHeight = 60.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -104,55 +106,29 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         editFounderPreferredName.text = founder?.preferredName
         editFounderCompany.text = founder?.company
         editFounderSpouse.text = founder?.spouseName
-        editFounderPhone.text = formattedNumber(number: (founder?.phone)!)
+        editFounderPhone.text = Helpers.formatPhoneNumber(number: (founder?.phone)!)
         editFounderEmail.text = founder?.email
         editFounderBio.text = founder?.bio
         
-        // make image and buttons circular
-        styleImageView(image: editFounderImageView)
-        styleButton(button: editFounderImageButton)
+        // make image and button circular
+        Helpers.applyCircularMaskToImageView(image: editFounderImageView)
+        Helpers.applyCircularMaskToButton(button: editFounderImageButton)
     }
     
     // MARK: - Private Helpers
     
-    private func formattedNumber(number: String) -> String {
-        let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        var mask = "(XXX) XXX-XXXX"
-        
-        var result = ""
-        var index = cleanPhoneNumber.startIndex
-        for ch in mask.characters {
-            if index == cleanPhoneNumber.endIndex {
-                break
-            }
-            if ch == "X" {
-                result.append(cleanPhoneNumber[index])
-                index = cleanPhoneNumber.index(after: index)
-            } else {
-                result.append(ch)
-            }
-        }
-        return result
-    }
-    
     private func saveDetails() {
-        FounderDirectory.sharedInstance.founders[0].firstName = "Cool"
-        print("save details")
-        
+        founder?.photo = editFounderImageView.image!
+        founder?.firstName = editFounderFirstName.text!
+        founder?.lastName = editFounderLastName.text!
+        founder?.fullName = Helpers.setFullName(firstName: editFounderFirstName.text!, lastName: editFounderLastName.text!)
+        founder?.preferredName = editFounderPreferredName.text!
+        founder?.company = editFounderCompany.text!
+        founder?.spouseName = editFounderSpouse.text!
+        founder?.phone = editFounderPhone.text!
+        founder?.email = editFounderEmail.text!
+        founder?.bio = editFounderBio.text!
     }
-    
-    private func styleButton(button: UIButton) {
-        button.layer.cornerRadius = button.frame.height/2
-        button.clipsToBounds = true
-    }
-    
-    private func styleImageView(image: UIImageView) {
-        image.layer.masksToBounds = false
-        image.layer.cornerRadius = image.frame.height/2
-        image.clipsToBounds = true
-    }
-    
-    // MARK: - Data Source Model Association
     
     // MARK: - Table View Data Source
     
@@ -177,7 +153,7 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == editFounderPhone {
-            editFounderPhone.text = formattedNumber(number: editFounderPhone.text!)
+            editFounderPhone.text = Helpers.formatPhoneNumber(number: editFounderPhone.text!)
         }
     }
     

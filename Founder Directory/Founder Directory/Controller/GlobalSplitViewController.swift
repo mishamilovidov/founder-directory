@@ -10,6 +10,12 @@ import UIKit
 
 class GlobalSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        self.delegate = self
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

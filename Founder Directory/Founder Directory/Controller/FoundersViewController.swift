@@ -34,6 +34,13 @@ class FoundersViewController : UITableViewController {
     
     // MARK: - View Controller Lifecycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        tableView.reloadData()
+        tableView.delegate = self
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,14 +83,6 @@ class FoundersViewController : UITableViewController {
         
     }
     
-    private func styleImageView(image: UIImageView) {
-        image.layer.masksToBounds = false
-        image.layer.cornerRadius = image.frame.height/2
-        image.clipsToBounds = true
-    }
-    
-    // MARK: - Data Source Model Association
-    
     // MARK: - Table View Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,14 +93,14 @@ class FoundersViewController : UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.FounderCellIdentifier, for: indexPath) as! FounderTableViewCell
         let image = FounderDirectory.sharedInstance.founderSet[indexPath.row].photo
         let fullName = "\(FounderDirectory.sharedInstance.founderSet[indexPath.row].fullName.capitalized)"
-        let company = "\(FounderDirectory.sharedInstance.founderSet[indexPath.row].company.capitalized)"
+        let company = "\(FounderDirectory.sharedInstance.founderSet[indexPath.row].company)"
         
         cell.founderImageView?.image = image
         cell.fullNameLabel?.text = fullName
         cell.companyLabel?.text = company
         
         // make image circular
-        styleImageView(image: (cell.founderImageView)!)
+        Helpers.applyCircularMaskToImageView(image: (cell.founderImageView)!)
         
         return cell
     }

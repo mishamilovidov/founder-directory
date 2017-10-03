@@ -71,12 +71,14 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
     
     // MARK: - View Controller Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
         
-        setupNavBar()
+        founderPhotoImageView.contentMode = .scaleAspectFill
+        
         configure()
-        
+        tableView.reloadData()
+        tableView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,58 +96,23 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
         }
     }
     
-    func setupNavBar() {
-    }
-    
-    
     // MARK: - Private Helpers
     
     private func configure() {
         founderPhotoImageView.image = founder?.photo
         founderFullNameLabel.text = founder?.fullName.capitalized
-        founderCompanyLabel.text = founder?.company.capitalized
+        founderCompanyLabel.text = founder?.company
         founderPreferredNameLabel.text = founder?.preferredName.capitalized
         founderSpouseNameLabel.text = founder?.spouseName.capitalized
-        founderPhoneButton.setTitle(formattedNumber(number: (founder?.phone)!), for: [])
+        founderPhoneButton.setTitle(Helpers.formatPhoneNumber(number: (founder?.phone)!), for: [])
         founderEmailButton.setTitle(founder?.email, for: [])
         founderBioLabel.text = founder?.bio
         
         // make image and buttons circular
-        styleImageView(image: founderPhotoImageView)
-        styleButton(button: messageButton)
-        styleButton(button: phoneButton)
-        styleButton(button: emailButton)
-    }
-    
-    private func formattedNumber(number: String) -> String {
-        let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        var mask = "(XXX) XXX-XXXX"
-        
-        var result = ""
-        var index = cleanPhoneNumber.startIndex
-        for ch in mask.characters {
-            if index == cleanPhoneNumber.endIndex {
-                break
-            }
-            if ch == "X" {
-                result.append(cleanPhoneNumber[index])
-                index = cleanPhoneNumber.index(after: index)
-            } else {
-                result.append(ch)
-            }
-        }
-        return result
-    }
-    
-    private func styleButton(button: UIButton) {
-        button.layer.cornerRadius = button.frame.height/2
-        button.clipsToBounds = true
-    }
-    
-    private func styleImageView(image: UIImageView) {
-        image.layer.masksToBounds = false
-        image.layer.cornerRadius = image.frame.height/2
-        image.clipsToBounds = true
+        Helpers.applyCircularMaskToImageView(image: founderPhotoImageView)
+        Helpers.applyCircularMaskToButton(button: messageButton)
+        Helpers.applyCircularMaskToButton(button: phoneButton)
+        Helpers.applyCircularMaskToButton(button: emailButton)
     }
     
     // MARK: - Table View Data Source
@@ -153,6 +120,12 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if indexPath.section == 0 {
+//            cell.isHidden = true
+//        }
+//    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Probably should refactor table to be dynamic instead of static so we don't have to manually hide certain fields
@@ -165,8 +138,20 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
             return 0.0
         }
         
+        if indexPath.row == 2 && founder?.phoneListed == true {
+            return tableView.rowHeight
+        }
+        
         if indexPath.row == 3 && founder?.emailListed == false {
             return 0.0
+        }
+        
+        if indexPath.row == 2 && founder?.emailListed == true {
+            return tableView.rowHeight
+        }
+        
+        if indexPath.row == 5 && founder?.spouseName.count != 0 {
+            return tableView.rowHeight
         }
         
         if indexPath.row == 5 && founder?.spouseName.count == 0 {

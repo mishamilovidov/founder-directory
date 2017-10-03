@@ -14,6 +14,7 @@
 		C641802B1F7F13A2001F42AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C641802A1F7F13A2001F42AE /* Assets.xcassets */; };
 		C641802E1F7F3D80001F42AE /* FounderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C641802D1F7F3D7F001F42AE /* FounderDetailViewController.swift */; };
 		C69747A11F7F0A9D005420B7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C69747A01F7F0A9D005420B7 /* WebKit.framework */; };
+		C6B324491F830B530069D59D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B324481F830B530069D59D /* Helpers.swift */; };
 		C6CD87771F7F68F9005716CD /* GlobalSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CD87761F7F68F9005716CD /* GlobalSplitViewController.swift */; };
 		C6F9BEE31F7F0BC700663109 /* FoundersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F9BEE21F7F0BC700663109 /* FoundersViewController.swift */; };
 		C6F9BEE51F7F0D2900663109 /* Founder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F9BEE41F7F0D2900663109 /* Founder.swift */; };
@@ -30,6 +31,7 @@
 		C641802A1F7F13A2001F42AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C641802D1F7F3D7F001F42AE /* FounderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FounderDetailViewController.swift; sourceTree = "<group>"; };
 		C69747A01F7F0A9D005420B7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C6B324481F830B530069D59D /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		C6CD87761F7F68F9005716CD /* GlobalSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSplitViewController.swift; sourceTree = "<group>"; };
 		C6F9BEE21F7F0BC700663109 /* FoundersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundersViewController.swift; sourceTree = "<group>"; };
 		C6F9BEE41F7F0D2900663109 /* Founder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Founder.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				C641802D1F7F3D7F001F42AE /* FounderDetailViewController.swift */,
 				C6CD87761F7F68F9005716CD /* GlobalSplitViewController.swift */,
 				C6213D0A1F8150DA00F1B9E7 /* FounderEditViewController.swift */,
+				C6B324481F830B530069D59D /* Helpers.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				C641802E1F7F3D80001F42AE /* FounderDetailViewController.swift in Sources */,
 				C6F9BEE31F7F0BC700663109 /* FoundersViewController.swift in Sources */,
 				C6F9BEE71F7F0DB600663109 /* FounderDirectory.swift in Sources */,
+				C6B324491F830B530069D59D /* Helpers.swift in Sources */,
 				C6213D0B1F8150DA00F1B9E7 /* FounderEditViewController.swift in Sources */,
 				C6CD87771F7F68F9005716CD /* GlobalSplitViewController.swift in Sources */,
 				C63277C41F79DA72007C0EAC /* AppDelegate.swift in Sources */,
