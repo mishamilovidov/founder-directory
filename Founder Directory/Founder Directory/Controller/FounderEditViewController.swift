@@ -51,7 +51,7 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         editFounderEmail.resignFirstResponder()
         editFounderBio.resignFirstResponder()
         
-        saveDetails()
+        saveFounderDetails()
         
         performSegue(withIdentifier: Storyboard.ExitSegueIdentifier, sender: sender)
     }
@@ -112,7 +112,7 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
     
     // MARK: - Private Helpers
     
-    private func saveDetails() {
+    private func saveFounderDetails() {
         founder?.photo = editFounderImageView.image!
         founder?.firstName = editFounderFirstName.text!
         founder?.lastName = editFounderLastName.text!
@@ -120,7 +120,7 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         founder?.preferredName = editFounderPreferredName.text!
         founder?.company = editFounderCompany.text!
         founder?.spouseName = editFounderSpouse.text!
-        founder?.phone = editFounderPhone.text!
+        founder?.phone = (editFounderPhone.text?.digits)!
         founder?.email = editFounderEmail.text!
         founder?.bio = editFounderBio.text!
         founder?.emailListed = listFounderEmailSwitch.isOn

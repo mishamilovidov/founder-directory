@@ -50,13 +50,12 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
     }
     
     @IBAction func callPhone(_ sender: Any) {
+        print("123")
         guard let phoneNumber = URL(string: "tel://" + (founder?.phone)!) else { return }
         UIApplication.shared.open(phoneNumber)
     }
     
     @IBAction func sendEmail(_ sender: Any) {
-        print("send email")
-        
         if MFMailComposeViewController.canSendMail() {
             let controller = MFMailComposeViewController()
             
