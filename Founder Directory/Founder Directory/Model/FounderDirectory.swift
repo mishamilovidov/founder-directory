@@ -83,6 +83,4 @@ class FounderDirectory {
         
     }
     
-    // MARK: - Public Helpers
-    
 }

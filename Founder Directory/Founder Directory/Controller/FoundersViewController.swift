@@ -26,8 +26,6 @@ class FoundersViewController : UITableViewController {
         static let ShowFounderSegueIdentifier = "ShowFounder"
     }
     
-    // MARK: - Outlets
-    
     // MARK: - Properties
     
     var selectedFounderFullName : String?
@@ -104,8 +102,6 @@ class FoundersViewController : UITableViewController {
         
         return cell
     }
-    
-    // MARK: - Table View Delegate
     
 }
 

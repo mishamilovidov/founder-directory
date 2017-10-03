@@ -121,12 +121,6 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if indexPath.section == 0 {
-//            cell.isHidden = true
-//        }
-//    }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Probably should refactor table to be dynamic instead of static so we don't have to manually hide certain fields
 
