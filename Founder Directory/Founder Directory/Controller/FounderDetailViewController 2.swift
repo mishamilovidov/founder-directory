@@ -55,6 +55,8 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
     }
     
     @IBAction func sendEmail(_ sender: Any) {
+        print("send email")
+        
         if MFMailComposeViewController.canSendMail() {
             let controller = MFMailComposeViewController()
             
@@ -69,14 +71,12 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
     
     // MARK: - View Controller Lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        founderPhotoImageView.contentMode = .scaleAspectFill
-        
+        setupNavBar()
         configure()
-        tableView.reloadData()
-        tableView.delegate = self
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,63 +94,64 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
         }
     }
     
+    func setupNavBar() {
+    }
+    
+    
     // MARK: - Private Helpers
     
     private func configure() {
-        founderPhotoImageView.image = founder?.photo
+        founderPhotoImageView.image = UIImage(named: (founder?.photo)!)
         founderFullNameLabel.text = founder?.fullName.capitalized
-        founderCompanyLabel.text = founder?.company
+        founderCompanyLabel.text = founder?.company.capitalized
         founderPreferredNameLabel.text = founder?.preferredName.capitalized
         founderSpouseNameLabel.text = founder?.spouseName.capitalized
-        founderPhoneButton.setTitle(Helpers.formatPhoneNumber(number: (founder?.phone)!), for: [])
+        founderPhoneButton.setTitle(formattedNumber(number: (founder?.phone)!), for: [])
         founderEmailButton.setTitle(founder?.email, for: [])
         founderBioLabel.text = founder?.bio
         
         // make image and buttons circular
-        Helpers.applyCircularMaskToImageView(image: founderPhotoImageView)
-        Helpers.applyCircularMaskToButton(button: messageButton)
-        Helpers.applyCircularMaskToButton(button: phoneButton)
-        Helpers.applyCircularMaskToButton(button: emailButton)
+        styleImageView(image: founderPhotoImageView)
+        styleButton(button: messageButton)
+        styleButton(button: phoneButton)
+        styleButton(button: emailButton)
+    }
+    
+    private func formattedNumber(number: String) -> String {
+        let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        var mask = "(XXX) XXX-XXXX"
+        
+        var result = ""
+        var index = cleanPhoneNumber.startIndex
+        for ch in mask.characters {
+            if index == cleanPhoneNumber.endIndex {
+                break
+            }
+            if ch == "X" {
+                result.append(cleanPhoneNumber[index])
+                index = cleanPhoneNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
+    
+    private func styleButton(button: UIButton) {
+        button.layer.cornerRadius = button.frame.height/2
+        button.clipsToBounds = true
+    }
+    
+    private func styleImageView(image: UIImageView) {
+        image.layer.masksToBounds = false
+        image.layer.cornerRadius = image.frame.height/2
+        image.clipsToBounds = true
     }
     
     // MARK: - Table View Data Source
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // Probably should refactor table to be dynamic instead of static so we don't have to manually hide certain fields
-
-        if indexPath.row == 0 {
-            return 270.0
-        }
-        
-        if indexPath.row == 2 && founder?.phoneListed == false {
-            return 0.0
-        }
-        
-        if indexPath.row == 2 && founder?.phoneListed == true {
-            return tableView.rowHeight
-        }
-        
-        if indexPath.row == 3 && founder?.emailListed == false {
-            return 0.0
-        }
-        
-        if indexPath.row == 2 && founder?.emailListed == true {
-            return tableView.rowHeight
-        }
-        
-        if indexPath.row == 5 && founder?.spouseName.count != 0 {
-            return tableView.rowHeight
-        }
-        
-        if indexPath.row == 5 && founder?.spouseName.count == 0 {
-            return 0.0
-        }
-        
-        return tableView.rowHeight
     }
     
     // MARK: - Delegates
