@@ -31,6 +31,8 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
     @IBOutlet weak var editFounderPhone: UITextField!
     @IBOutlet weak var editFounderEmail: UITextField!
     @IBOutlet weak var editFounderBio: UITextView!
+    @IBOutlet weak var listFounderEmailSwitch: UISwitch!
+    @IBOutlet weak var listFounderPhoneSwitch: UISwitch!
     
     // MARK: - Properties
     
@@ -78,15 +80,6 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         
     }
     
-    @IBAction func toggleListEmailSwitch(_ sender: UISwitch) {
-        print("toggle list email")
-    }
-    
-    @IBAction func toggleListPhoneSwitch(_ sender: UISwitch) {
-        print("toggle list phone")
-    }
-    
-    
     // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
@@ -109,6 +102,8 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         editFounderPhone.text = Helpers.formatPhoneNumber(number: (founder?.phone)!)
         editFounderEmail.text = founder?.email
         editFounderBio.text = founder?.bio
+        listFounderEmailSwitch.isOn = (founder?.emailListed)!
+        listFounderPhoneSwitch.isOn = (founder?.phoneListed)!
         
         // make image and button circular
         Helpers.applyCircularMaskToImageView(image: editFounderImageView)
@@ -128,6 +123,8 @@ class FounderEditViewController : UITableViewController, UITextFieldDelegate, UI
         founder?.phone = editFounderPhone.text!
         founder?.email = editFounderEmail.text!
         founder?.bio = editFounderBio.text!
+        founder?.emailListed = listFounderEmailSwitch.isOn
+        founder?.phoneListed = listFounderPhoneSwitch.isOn
     }
     
     // MARK: - Table View Data Source

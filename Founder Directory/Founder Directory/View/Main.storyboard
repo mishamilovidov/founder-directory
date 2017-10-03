@@ -658,13 +658,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8z-fa-Qvs">
                                                     <rect key="frame" x="310" y="6.3333333333333339" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="toggleListEmailSwitch:" destination="ewp-JP-1tp" eventType="valueChanged" id="O7f-ur-bmo"/>
-                                                        <action selector="toggleListEmailSwitch:" destination="xpa-lI-K0s" eventType="valueChanged" id="Xvl-WS-Ra2"/>
-                                                    </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjR-cX-pxf">
-                                                    <rect key="frame" x="8" y="11" width="76.333333333333329" height="21.666666666666664"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make email public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjR-cX-pxf">
+                                                    <rect key="frame" x="8" y="11" width="144.66666666666666" height="21.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -687,13 +683,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jx1-gj-Jd2">
                                                     <rect key="frame" x="310" y="6.3333333333333339" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="toggleListPhoneSwitch:" destination="xpa-lI-K0s" eventType="valueChanged" id="1mW-NN-kl1"/>
-                                                        <action selector="toggleListPhoneSwitch:" destination="ewp-JP-1tp" eventType="valueChanged" id="QyG-B3-o1Q"/>
-                                                    </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwI-Aq-stf" userLabel="List phone">
-                                                    <rect key="frame" x="8" y="11" width="84.666666666666671" height="21.666666666666664"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make phone public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwI-Aq-stf" userLabel="List phone">
+                                                    <rect key="frame" x="8" y="11" width="153" height="21.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -742,6 +734,8 @@
                         <outlet property="editFounderPhone" destination="0fz-sF-zlH" id="SxJ-p4-hd1"/>
                         <outlet property="editFounderPreferredName" destination="5P3-mo-KW0" id="v1Q-xm-PuB"/>
                         <outlet property="editFounderSpouse" destination="EPK-dm-8tQ" id="o8W-yG-k8K"/>
+                        <outlet property="listFounderEmailSwitch" destination="q8z-fa-Qvs" id="k0r-4l-xJC"/>
+                        <outlet property="listFounderPhoneSwitch" destination="jx1-gj-Jd2" id="NAm-xE-gqp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXN-Fn-mqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
