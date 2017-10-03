@@ -50,7 +50,6 @@ class FounderDetailViewController : UITableViewController, MFMessageComposeViewC
     }
     
     @IBAction func callPhone(_ sender: Any) {
-        print("123")
         guard let phoneNumber = URL(string: "tel://" + (founder?.phone)!) else { return }
         UIApplication.shared.open(phoneNumber)
     }
